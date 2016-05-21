@@ -1,7 +1,13 @@
-<body>
-  <div id="host" class="user-form">
-    <%= form_for(@game) do |f| %>
-      <%= f.submit "Host Game", class: "button" %>
-    <% end %>
-  </div>
-</body>
+<div id="host" class="user-form">
+  <%= form_for(@game) do |f| %>
+    <%= f.submit "Host Game", class: "button" %>
+  <% end %>
+</div>
+<div id="join" class="user-form">
+  <p>Or, if you have your game code:</p>
+  <%= form_for(@game.users.new) do |f| %>
+    <%= f.text_field(:name, placeholder: "name") %><br>
+    <%= f.text_field(:game, placeholder: "code") %><br>
+    <%= f.submit "Join Game", class: "button" %>
+  <% end %>
+</div>
