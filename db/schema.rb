@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160521221135) do
+ActiveRecord::Schema.define(version: 20160522132232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "game_words", force: :cascade do |t|
+    t.integer "game_id"
+    t.integer "word_id"
+  end
+
+  add_index "game_words", ["game_id"], name: "index_game_words_on_game_id", using: :btree
+  add_index "game_words", ["word_id"], name: "index_game_words_on_word_id", using: :btree
 
   create_table "games", force: :cascade do |t|
     t.string "code"
@@ -33,5 +41,7 @@ ActiveRecord::Schema.define(version: 20160521221135) do
     t.string "word"
   end
 
+  add_foreign_key "game_words", "games"
+  add_foreign_key "game_words", "words"
   add_foreign_key "users", "games"
 end

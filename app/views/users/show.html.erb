@@ -1,1 +1,6 @@
 <div class="display"><%= @user.team %></div>
+<% @user.game.words.each do |word| %>
+  <div class="word">
+    <p><%= word.word %></p> 
+  </div>
+<% end %>

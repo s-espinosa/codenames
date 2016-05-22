@@ -6,6 +6,7 @@ class GamesController < ApplicationController
   def create
     @game = Game.new
     @game.generate_code
+    @game.generate_words
     redirect_to game_path(@game.id)
   end
 
